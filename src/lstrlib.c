@@ -859,6 +859,9 @@ static void createmetatable (lua_State *L) {
 /*
 ** Open string library
 */
+
+LUALIB_API int luaopen_pack(lua_State *L);
+
 LUALIB_API int luaopen_string (lua_State *L) {
   luaL_register(L, LUA_STRLIBNAME, strlib);
 #if defined(LUA_COMPAT_GFIND)
@@ -866,6 +869,8 @@ LUALIB_API int luaopen_string (lua_State *L) {
   lua_setfield(L, -2, "gfind");
 #endif
   createmetatable(L);
+    
+  luaopen_pack(L);
   return 1;
 }
 
